@@ -1,0 +1,18 @@
+[package]
+name = "serde-value-flatten"
+version = "0.1.0"
+authors = ["OVH SAS <github@ovh.net>"]
+edition = "2018"
+license = "BSD-3-Clause"
+license-file = "LICENSE"
+description = "Crate to flatten structs based on serde."
+keywords = ["serde", "flatten"]
+readme = "README.md"
+repository = "https://github.com/cdumay/rust-serde-value-flatten"
+
+[features]
+ovh-ldp = []
+
+[dependencies]
+serde = "1.0"
+serde-value = "0.6"
