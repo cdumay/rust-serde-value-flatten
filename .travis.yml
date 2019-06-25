@@ -1,0 +1,12 @@
+language: rust
+rust:
+- stable
+- nightly
+matrix:
+  allow_failures:
+  - rust: nightly
+before_script:
+- PATH=$PATH:/home/travis/.cargo/bin
+script:
+- cargo build --release --verbose
+- cargo build --all-features --release --verbose
