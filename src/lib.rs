@@ -30,12 +30,14 @@
 //! ## Example
 //!
 //! ```rust
+//! use serde::Serialize;
+//!
 //! #[derive(Serialize, Clone, Debug)]
 //! struct SubFoo {
 //!     a: String,
 //!     b: u64,
 //! }
-//! 
+//!
 //! #[derive(Serialize, Clone, Debug)]
 //! struct Foo {
 //!     a: String,
@@ -43,11 +45,11 @@
 //!     c: Vec<i8>,
 //!     d: SubFoo,
 //! }
-//! 
+//!
 //! fn main() {
 //!     let foo = Foo { a: "test".into(), b: 0.5, c: vec![5, 9], d: SubFoo { a: "subtest".into(), b: 695217 } };
 //!     let ser = serde_value_flatten::to_flatten_maptree("_", Some("_"), &foo).unwrap();
-//! 
+//!
 //!     println!("{}", serde_json::to_string_pretty(&ser).unwrap());
 //! }
 //! ```
@@ -111,14 +113,16 @@ mod ser;
 /// * **prefix**: Prefix to use on the first level before the attribute / key / index name
 ///
 /// ## Example
-/// 
+///
 /// ```rust
+/// use serde::Serialize;
+///
 /// #[derive(Serialize, Clone, Debug)]
 /// struct SubFoo {
 ///     a: String,
 ///     b: u64,
 /// }
-/// 
+///
 /// #[derive(Serialize, Clone, Debug)]
 /// struct Foo {
 ///     a: String,
@@ -126,11 +130,11 @@ mod ser;
 ///     c: Vec<i8>,
 ///     d: SubFoo,
 /// }
-/// 
+///
 /// fn main() {
 ///     let foo = Foo { a: "test".into(), b: 0.5, c: vec![5, 9], d: SubFoo { a: "subtest".into(), b: 695217 } };
 ///     let ser = serde_value_flatten::to_flatten_maptree("|", None, &foo).unwrap();
-/// 
+///
 ///     println!("{}", serde_json::to_string_pretty(&ser).unwrap());
 /// }
 /// ```
@@ -150,4 +154,3 @@ pub fn to_flatten_maptree<T: ?Sized>(key_separator: &str, prefix: Option<&str>, 
     Ok(ser::FlatSerializer::new(key_separator.into(), prefix.unwrap_or("").into())
         .disassemble("", "", &serde_value::to_value(src)?))
 }
-
