@@ -1,9 +1,9 @@
 # serde-value-flatten
 
-[![Build Status](https://travis-ci.org/cdumay/rust-serde-value-flatten.svg?branch=master)](https://travis-ci.org/cdumay/rust-serde-value-flatten) 
-[![Latest version](https://img.shields.io/crates/v/serde-value-flatten.svg)](https://crates.io/crates/serde-value-flatten)
-[![Documentation](https://docs.rs/serde-value-flatten/badge.svg)](https://docs.rs/serde-value-flatten) 
-![License](https://img.shields.io/crates/l/serde-value-flatten.svg)
+[![License: BSD-3-Clause](https://img.shields.io/badge/license-BSD--3--Clause-blue)](./LICENSE)
+[![serde-value-flatten on crates.io](https://img.shields.io/crates/v/serde-value-flatten)](https://crates.io/crates/serde-value-flatten)
+[![serde-value-flatten on docs.rs](https://docs.rs/serde-value-flatten/badge.svg)](https://docs.rs/serde-value-flatten)
+[![Source Code Repository](https://img.shields.io/badge/Code-On%20GitHub-blue?logo=GitHub)](https://github.com/cdumay/serde-value-flatten)
 
 Based on `serde-value`, `serde-value-flatten` provides a function to flatten any struct which
 implement `serde::Serialize`.
@@ -14,9 +14,9 @@ You can start using it by first adding it to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-serde = "1.0"
-serde_derive = "1.0"
-serde_value_flatten = "0.1"
+serde = { version = "1.0", features = ["derive"] }
+serde-value = "0.7"
+serde-value-flatten = "0.2"
 ```
 
 Then, create a structure which implement the `serde::Serialize` trait and use it with any
@@ -25,6 +25,8 @@ serde lib.
 ## Example
 
 ```rust
+use serde::Serialize;
+
 #[derive(Serialize, Clone, Debug)]
 struct SubFoo {
     a: String,
@@ -66,9 +68,9 @@ In your `Cargo.toml`, set:
 
 ```toml
 [dependencies]
-serde = "1.0"
-serde_derive = "1.0"
-serde_value_flatten = { version = "0.1", features = ["ovh-ldp"] }
+serde = { version = "1.0", features = ["derive"] }
+serde-value = "0.7"
+serde-value-flatten = { version = "0.2", features = ["ovh-ldp"] }
 ```
 
 Re-run the previous example, and now the output will be :

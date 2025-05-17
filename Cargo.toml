@@ -1,6 +1,6 @@
 [package]
 name = "serde-value-flatten"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["OVH SAS <github@ovh.net>"]
 edition = "2018"
 license = "BSD-3-Clause"
@@ -15,4 +15,8 @@ ovh-ldp = []
 
 [dependencies]
 serde = "1.0"
-serde-value = "0.6"
+serde-value = "0.7"
+
+[dev-dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
